@@ -7,6 +7,12 @@ import cryptowatch as cw
 currencypair1_input1 = input('Enter the abbreviation for the 1st currency of the 1st trading pair to search: ')
 currencypair1_input2 = input('Enter the abbreviation for the 2nd currency of the 1st trading pair to search: ')
 
+currencypair1_combo1 = currencypair1_input1 + currencypair1_input2
+currencypair1_combo2 = currencypair1_input2 + currencypair1_input1
+
+currencypair2_input1 = None
+currencypair2_input2 = None
+
 answer = None
 while answer not in ("y", "Y", "n", "N"):
     answer = input("Would you like to search for another trading pair? Enter y/n: ")
@@ -15,6 +21,26 @@ while answer not in ("y", "Y", "n", "N"):
             'Enter the abbreviation for the 1st currency of the 2nd trading pair to search: ')
         currencypair2_input2 = input(
             'Enter the abbreviation for the 2nd currency of the 2nd trading pair to search: ')
+        currencypair2_combo1 = currencypair2_input1 + currencypair2_input2
+        currencypair2_combo2 = currencypair2_input2 + currencypair2_input1
+    elif answer == "n":
+        break
+    else:
+        print("Please enter either 'y' or 'n' only.")
+
+currencypair3_input1 = None
+currencypair3_input2 = None
+
+answer = None
+while answer not in ("y", "Y", "n", "N"):
+    answer = input("Would you like to search for another trading pair? Enter y/n: ")
+    if answer == "y":
+        currencypair3_input1 = input(
+            'Enter the abbreviation for the 1st currency of the 2nd trading pair to search: ')
+        currencypair3_input2 = input(
+            'Enter the abbreviation for the 2nd currency of the 2nd trading pair to search: ')
+        currencypair3_combo1 = currencypair3_input1 + currencypair3_input2
+        currencypair3_combo2 = currencypair3_input2 + currencypair3_input1
     elif answer == "n":
         break
     else:
@@ -22,15 +48,7 @@ while answer not in ("y", "Y", "n", "N"):
 
 all_markets = cw.markets.list()
 
-currencypair1_combo1 = currencypair1_input1+currencypair1_input2
-currencypair1_combo2 = currencypair1_input2+currencypair1_input1
-currencypair2_combo1 = currencypair2_input1+currencypair2_input2
-currencypair2_combo2 = currencypair2_input2+currencypair2_input1
-
-print(currencypair2_combo1, currencypair2_combo2)
-
 market_exchange_count = 0
-
 
 # Need to eventually turn this into a function to apply to other inputted market pairs
 for market in all_markets.markets:
